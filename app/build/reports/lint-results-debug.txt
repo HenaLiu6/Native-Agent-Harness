@@ -1,0 +1,140 @@
+D:\Work\Programming\Repos\appTest\app\build.gradle.kts:13: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
+        targetSdk = 35
+        ~~~~~~~~~~~~~~
+
+   Explanation for issues of type "OldTargetApi":
+   When your application runs on a version of Android that is more recent than
+   your targetSdkVersion specifies that it has been tested with, various
+   compatibility modes kick in. This ensures that your application continues
+   to work, but it may look out of place. For example, if the targetSdkVersion
+   is less than 14, your app may get an option button in the UI.
+
+   To fix this issue, set the targetSdkVersion to the highest available value.
+   Then test your app to make sure everything works correctly. You may want to
+   consult the compatibility notes to see what changes apply to each version
+   you are adding support for:
+   https://developer.android.com/reference/android/os/Build.VERSION_CODES.html
+   as well as follow this guide:
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.
+   html
+
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.html
+
+D:\Work\Programming\Repos\appTest\app\build.gradle.kts:42: Warning: A newer version of androidx.core:core-ktx than 1.13.1 is available: 1.19.1 [GradleDependency]
+    implementation("androidx.core:core-ktx:1.13.1")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\build.gradle.kts:43: Warning: A newer version of androidx.appcompat:appcompat than 1.7.0 is available: 1.8.0 [GradleDependency]
+    implementation("androidx.appcompat:appcompat:1.7.0")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\build.gradle.kts:44: Warning: A newer version of com.google.android.material:material than 1.12.0 is available: 1.14.0 [GradleDependency]
+    implementation("com.google.android.material:material:1.12.0")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\build.gradle.kts:45: Warning: A newer version of androidx.webkit:webkit than 1.12.0 is available: 1.18.0 [GradleDependency]
+    implementation("androidx.webkit:webkit:1.12.0")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+D:\Work\Programming\Repos\appTest\app\src\main\AndroidManifest.xml:6: Warning: The attribute android:allowBackup is deprecated from Android 12 and higher and may be removed in future versions. Consider adding the attribute android:dataExtractionRules specifying an @xml resource which configures cloud backups and device transfers on Android 12 and higher. [DataExtractionRules]
+        android:allowBackup="false"
+                             ~~~~~
+
+   Explanation for issues of type "DataExtractionRules":
+   Before Android 12, the attributes android:allowBackup and
+   android:fullBackupContent were used to configure all forms of backup,
+   including cloud backups, device-to-device transfers and adb backup.
+
+   In Android 12 and higher, these attributes have been deprecated and will
+   only apply to cloud backups. You should instead use the attribute
+   android:dataExtractionRules, specifying an @xml resource that configures
+   which files to back up, for cloud backups and for device-to-device
+   transfers, separately. If your minSdkVersion supports older versions,
+   you'll still want to specify an android:fullBackupContent resource if the
+   default behavior is not right for your app.
+
+   https://developer.android.com/about/versions/12/backup-restore#xml-changes
+   https://goo.gle/DataExtractionRules
+
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:614: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        transferStatus?.text = "Starting local transfer server…"
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:623: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                                transferStatus?.text = "${app.name} received from your computer."
+                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:623: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                                transferStatus?.text = "${app.name} received from your computer."
+                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:747: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                status.text = "Fetching available models…"
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:756: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                                modelLabel.text = "Selected model: ${it.label}\n${it.id}"
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:756: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                                modelLabel.text = "Selected model: ${it.label}\n${it.id}"
+                                                   ~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:781: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                status.text = "Fetch the current model list first."
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:788: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                    modelLabel.text = "Selected model: ${availableModels[index].label}\n${selectedModel[0]}"
+                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:788: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                    modelLabel.text = "Selected model: ${availableModels[index].label}\n${selectedModel[0]}"
+                                       ~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:790: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                    status.text = "Model selection saved."
+                                   ~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:832: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                currentStatus?.text = "Stop generation before clearing the conversation."
+                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:878: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            currentStatus?.text = "Stopping…"
+                                   ~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:888: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            currentStatus?.text = "An app-generation request is already running."
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:893: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            currentStatus?.text = "Choose a model in Settings before generating an app."
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:897: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            currentStatus?.text = "Add a Token Harbor API key in Settings before generating an app."
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:915: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        currentStatus?.text = "Waiting…"
+                               ~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:949: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                        currentStatus?.text = "Generation stopped. The saved conversation is available to continue."
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:956: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                        currentStatus?.text = "Error: ${error.message ?: "Generation failed."}"
+                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:956: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                        currentStatus?.text = "Error: ${error.message ?: "Generation failed."}"
+                                               ~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:969: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            currentStatus?.text = "Could not load conversation: ${error.message ?: "stored history is invalid."}"
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Work\Programming\Repos\appTest\app\src\main\java\com\example\pocketruntime\MainActivity.kt:969: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            currentStatus?.text = "Could not load conversation: ${error.message ?: "stored history is invalid."}"
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+0 errors, 27 warnings
